@@ -16,22 +16,46 @@
     "modules": [
         {
             "name": "liquid-dsp",
-            "config-opts": ["--enable-fftoverride"],
-            "build-options" : {
+            "config-opts": [
+                "--enable-fftoverride"
+            ],
+            "build-options": {
                 "cflags": "-O -msse3 -march=native"
             },
-            "make-args": ["-j4"],
-            "sources": [    { "type": "git", "url": "https://github.com/jgaeddert/liquid-dsp" },
-                            { "type": "shell", "commands": ["cp bootstrap.sh bootstrap"] }
-
+            "make-args": [
+                "-j4"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/jgaeddert/liquid-dsp"
+                },
+                {
+                    "type": "shell",
+                    "commands": [
+                        "cp bootstrap.sh bootstrap"
+                    ]
+                }
             ]
         },
         {
             "name": "glu",
-            "config-opts": ["" ],
-            "cxxflags": [ "" ],
-            "make-args": ["-j4"],
-            "sources": [ { "type": "archive", "url": "https://mesa.freedesktop.org/archive/glu/glu-9.0.0.tar.bz2", "sha256": "1f7ad0d379a722fcbd303aa5650c6d7d5544fde83196b42a73d1193568a4df12"} ]
+            "config-opts": [
+                ""
+            ],
+            "cxxflags": [
+                ""
+            ],
+            "make-args": [
+                "-j4"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://mesa.freedesktop.org/archive/glu/glu-9.0.0.tar.bz2",
+                    "sha256": "1f7ad0d379a722fcbd303aa5650c6d7d5544fde83196b42a73d1193568a4df12"
+                }
+            ]
         },
         {
             "name": "wxWidgets",
@@ -42,37 +66,90 @@
         },
         {
             "name": "hamlib",
-            "config-opts": ["" ],
-            "cxxflags": [ "" ],
-            "make-args": ["-j4"],
-            "sources": [ {  "type": "git", "url": "https://github.com/N0NB/hamlib.git" } ]
+            "config-opts": [
+                ""
+            ],
+            "cxxflags": [
+                ""
+            ],
+            "make-args": [
+                "-j4"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/N0NB/hamlib.git"
+                }
+            ]
         },
         {
             "name": "libusb",
-            "config-opts": ["--disable-udev"],
-            "make-args": ["-j4"],
-            "sources": [ {"type": "git", "url": "https://github.com/libusb/libusb.git" },
-						 { "type": "shell", "commands": ["cp bootstrap.sh bootstrap"] } ]
+            "config-opts": [
+                "--disable-udev"
+            ],
+            "make-args": [
+                "-j4"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/libusb/libusb.git"
+                },
+                {
+                    "type": "shell",
+                    "commands": [
+                        "cp bootstrap.sh bootstrap"
+                    ]
+                }
+            ]
         },
         {
             "name": "SoapySDR",
-            "cmake": true,
-            "config-opts": ["-DCMAKE_BUILD_TYPE=Release"],
-            "make-args": ["-j4"],
-            "sources": [ {"type": "git", "branch":"maint", "url": "https://github.com/pothosware/SoapySDR.git" } ]
+            "buildsystem": "cmake",
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Release"
+            ],
+            "make-args": [
+                "-j4"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "branch": "maint",
+                    "url": "https://github.com/pothosware/SoapySDR.git"
+                }
+            ]
         },
         {
             "name": "CubicSDR",
-            "cmake": true,
-            "config-opts": [ "-DCMAKE_BUILD_TYPE=Release", "-DUSE_HAMLIB=1" ],
-            "sources": [ { "type": "git", "url": "https://github.com/cjcliffe/CubicSDR.git" } ]
+            "buildsystem": "cmake",
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Release",
+                "-DUSE_HAMLIB=1"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/cjcliffe/CubicSDR.git"
+                }
+            ]
         },
         {
             "name": "SoapyRemote",
-            "cmake": true,
-            "config-opts": ["-DCMAKE_BUILD_TYPE=Release"],
-            "make-args": ["-j4"],
-            "sources": [ {"type": "git", "branch":"maint", "url": "https://github.com/pothosware/SoapyRemote.git" } ]
+            "buildsystem": "cmake",
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Release"
+            ],
+            "make-args": [
+                "-j4"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "branch": "maint",
+                    "url": "https://github.com/pothosware/SoapyRemote.git"
+                }
+            ]
         },
         {
             "name": "SoapyRTLSDR",
@@ -93,79 +170,178 @@
         {
             "name": "SoapyAirspy",
             "disabled": false,
-            "cmake": true,
-            "config-opts": ["-DCMAKE_BUILD_TYPE=Release"],
-            "make-args": ["-j4"],
-            "sources": [ {"type": "git", "url": "https://github.com/pothosware/SoapyAirspy.git" } ],
-			"modules": [ {
-                "name": "libairspy",
-                "cmake": true,
-                "config-opts": [""],
-                "make-args": ["-j4"],
-                "sources": [ {"type": "git", "url": "https://github.com/airspy/host.git" } ]
-            }
+            "buildsystem": "cmake",
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Release"
+            ],
+            "make-args": [
+                "-j4"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/pothosware/SoapyAirspy.git"
+                }
+            ],
+            "modules": [
+                {
+                    "name": "libairspy",
+                    "buildsystem": "cmake",
+                    "config-opts": [
+                        ""
+                    ],
+                    "make-args": [
+                        "-j4"
+                    ],
+                    "sources": [
+                        {
+                            "type": "git",
+                            "url": "https://github.com/airspy/host.git"
+                        }
+                    ]
+                }
             ]
         },
         {
             "name": "SoapyHackRF",
             "disabled": false,
-            "cmake": true,
-            "config-opts": ["-DCMAKE_BUILD_TYPE=Release", "-DLIBHACKRF_INCLUDE_DIR=/app/include/libhackrf", "-DLIBHACKRF_LIBRARIES=/app/lib/libhackrf.so"],
-            "make-args": ["-j4"],
-            "sources": [ {"type": "git", "url": "https://github.com/pothosware/SoapyHackRF.git" } ],
-			"modules": [ {
-                "name": "libfftw3",
-                "config-opts": ["--enable-float"],
-                "make-args": ["-j4"],
-                "sources": [ {"type": "archive", "url": "http://www.fftw.org/fftw-3.3.6-pl1.tar.gz", "sha256": "1ef4aa8427d9785839bc767f3eb6a84fcb5e9a37c31ed77a04e7e047519a183d" } ]
-            },
-	    {
-                "name": "libhackrf",
-                "cmake": true,
-                "subdir": "host",
-                "config-opts": [""],
-                "make-args": ["-j4"],
-                "sources": [ {"type": "git", "url": "https://github.com/mossmann/hackrf.git" } ]
-            }
+            "buildsystem": "cmake",
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Release",
+                "-DLIBHACKRF_INCLUDE_DIR=/app/include/libhackrf",
+                "-DLIBHACKRF_LIBRARIES=/app/lib/libhackrf.so"
+            ],
+            "make-args": [
+                "-j4"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/pothosware/SoapyHackRF.git"
+                }
+            ],
+            "modules": [
+                {
+                    "name": "libfftw3",
+                    "config-opts": [
+                        "--enable-float"
+                    ],
+                    "make-args": [
+                        "-j4"
+                    ],
+                    "sources": [
+                        {
+                            "type": "archive",
+                            "url": "http://www.fftw.org/fftw-3.3.6-pl1.tar.gz",
+                            "sha256": "1ef4aa8427d9785839bc767f3eb6a84fcb5e9a37c31ed77a04e7e047519a183d"
+                        }
+                    ]
+                },
+                {
+                    "name": "libhackrf",
+                    "buildsystem": "cmake",
+                    "subdir": "host",
+                    "config-opts": [
+                        ""
+                    ],
+                    "make-args": [
+                        "-j4"
+                    ],
+                    "sources": [
+                        {
+                            "type": "git",
+                            "url": "https://github.com/mossmann/hackrf.git"
+                        }
+                    ]
+                }
             ]
         },
         {
             "name": "SoapyRedPitaya",
-            "cmake": true,
-            "config-opts": ["-DCMAKE_BUILD_TYPE=Release"],
-            "make-args": ["-j4"],
-            "sources": [ {"type": "git", "url": "https://github.com/pothosware/SoapyRedPitaya.git" } ]
+            "buildsystem": "cmake",
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Release"
+            ],
+            "make-args": [
+                "-j4"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/pothosware/SoapyRedPitaya.git"
+                }
+            ]
         },
         {
             "name": "SoapySDRPlay",
             "disabled": true,
-            "cmake": true,
-            "config-opts": ["-DCMAKE_BUILD_TYPE=Release"],
-            "make-args": ["-j4"],
-            "sources": [ {"type": "git", "url": "https://github.com/pothosware/SoapySDRPlay.git" } ]
+            "buildsystem": "cmake",
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Release"
+            ],
+            "make-args": [
+                "-j4"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/pothosware/SoapySDRPlay.git"
+                }
+            ]
         },
         {
             "name": "SoapyAudio",
-            "cmake": true,
-            "config-opts": ["-DCMAKE_BUILD_TYPE=Release", "-DUSE_HAMLIB=1", "-DUSE_AUDIO_PULSE=1", "-DUSE_AUDIO_ALSA=0" ],
-            "make-args": ["-j4"],
-            "sources": [ { "type": "git", "url": "https://github.com/pothosware/SoapyAudio.git" } ]
+            "buildsystem": "cmake",
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Release",
+                "-DUSE_HAMLIB=1",
+                "-DUSE_AUDIO_PULSE=1",
+                "-DUSE_AUDIO_ALSA=0"
+            ],
+            "make-args": [
+                "-j4"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/pothosware/SoapyAudio.git"
+                }
+            ]
         },
         {
             "name": "SoapyBladeRF",
             "disabled": false,
-            "cmake": true,
-            "config-opts": ["-DCMAKE_BUILD_TYPE=Release"],
-            "make-args": ["-j4"],
-            "sources": [ {"type": "git", "url": "https://github.com/pothosware/SoapyBladeRF.git" } ],
-			"modules": [ {
-                "name": "libbladerf",
-                "cmake": true,
-                "subdir": "host",
-                "config-opts": [""],
-                "make-args": ["-j4"],
-                "sources": [ {"type": "git", "url": "https://github.com/Nuand/bladeRF" } ]
-            }
+            "buildsystem": "cmake",
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Release"
+            ],
+            "make-args": [
+                "-j4"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/pothosware/SoapyBladeRF.git"
+                }
+            ],
+            "modules": [
+                {
+                    "name": "libbladerf",
+                    "buildsystem": "cmake",
+                    "subdir": "host",
+                    "config-opts": [
+                        ""
+                    ],
+                    "make-args": [
+                        "-j4"
+                    ],
+                    "sources": [
+                        {
+                            "type": "git",
+                            "url": "https://github.com/Nuand/bladeRF"
+                        }
+                    ]
+                }
             ]
         }
     ]
