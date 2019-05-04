@@ -179,18 +179,36 @@
         },
         {
             "name": "SoapyRTLSDR",
-            "disabled": false,
-            "cmake": true,
-            "config-opts": ["-DCMAKE_BUILD_TYPE=Release"],
-            "make-args": ["-j4"],
-            "sources": [ {"type": "git", "url": "https://github.com/pothosware/SoapyRTLSDR.git" } ],
-            "modules": [ {
-                "name": "librtlsdr",
-                "cmake": true,
-                "config-opts": [""],
-                "make-args": ["-j4"],
-                "sources": [ {"type": "git", "url": "git://git.osmocom.org/rtl-sdr.git" } ]
-            }
+            "buildsystem": "cmake",
+            "config-opts": [
+                "-DCMAKE_BUILD_TYPE=Release"
+            ],
+            "make-args": [
+                "-j4"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/pothosware/SoapyRTLSDR.git"
+                }
+            ],
+            "modules": [
+                {
+                    "name": "librtlsdr",
+                    "buildsystem": "cmake",
+                    "config-opts": [
+                        "-DDETACH_KERNEL_DRIVER=ON"
+                    ],
+                    "make-args": [
+                        "-j4"
+                    ],
+                    "sources": [
+                        {
+                            "type": "git",
+                            "url": "git://git.osmocom.org/rtl-sdr.git"
+                        }
+                    ]
+                }
             ]
         },
         {
